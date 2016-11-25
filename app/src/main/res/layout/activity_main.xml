@@ -3,10 +3,13 @@
               android:id="@+id/main_lin"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:elevation="10dp"
               android:orientation="vertical"
     >
 
+
+    <include
+        layout="@layout/statusbar_view"
+        android:focusable="true"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -65,73 +68,109 @@
             android:orientation="horizontal"
             >
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="35dp"
-                android:gravity="center"
-                android:orientation="vertical"
                 >
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@mipmap/home_btn_bg"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    >
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/home_scan"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="扫码付"
-                        android:textColor="#000"
-                        android:textSize="17sp"
-                        />
-
-                </LinearLayout>
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
                     android:src="@mipmap/home_btn_shadow"
                     />
 
-            </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingBottom="10dp"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/lin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/home_btn_bg"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/home_scan"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="扫码付"
+                            android:textColor="#000"
+                            android:textSize="17sp"
+                            />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
 
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
-                android:background="@mipmap/home_btn_bg"
-                android:gravity="center"
-                android:orientation="vertical"
                 >
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/home_qr"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@mipmap/home_btn_shadow"
                     />
 
-                <TextView
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="付款码"
-                    android:textColor="#000"
-                    android:textSize="17sp"
-                    />
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingBottom="10dp"
+                    >
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/home_btn_bg"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/home_qr"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="付款码"
+                            android:textColor="#000"
+                            android:textSize="17sp"
+                            />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
 
 
         </LinearLayout>

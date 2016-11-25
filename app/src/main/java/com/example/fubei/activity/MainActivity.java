@@ -1,12 +1,13 @@
 package com.example.fubei.activity;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.example.fubei.R;
 import com.example.fubei.adapter.LeftItemAdapter;
 import com.example.fubei.bean.AdEntity;
+import com.example.fubei.utils.StatusBarUtils;
 import com.example.fubei.widget.AutoScrollTextView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
@@ -27,7 +29,7 @@ import butterknife.ButterKnife;
 import static com.example.fubei.utils.Utils.mToast;
 
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @BindView(R.id.list_order)
     ListView mListOrder;
@@ -51,15 +53,29 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     };
 
+    private View mStatusBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
+        StatusBarUtils.initStatusBar(this, R.color.colorAccent);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initContentViews();
         initMenuView();
+        initView();
     }
+
+
+    private void initView() {
+        mStatusBar = (View) findViewById(R.id.status_bar);
+        ViewGroup.LayoutParams linearParams = (ViewGroup.LayoutParams) mStatusBar.getLayoutParams();
+        linearParams.height = StatusBarUtils.getStatusBarHeight(this);
+        mStatusBar.setLayoutParams(linearParams);
+        StatusBarUtils.setStatusBarViewVisibility(mStatusBar);
+    }
+
 
     /**
      * 初始化布局控件
@@ -71,6 +87,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
             @Override
             public void onRefresh() {
                 mHandler.sendEmptyMessageAtTime(0, 500);
+            }
+        });
+        findViewById(R.id.lin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
             }
         });
     }
