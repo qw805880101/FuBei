@@ -663,7 +663,6 @@ public class CustomViewAbove extends ViewGroup {
 
 	@Override
 	public boolean onTouchEvent(MotionEvent ev) {
-		System.out.println("onTouchEvent");
 		if (!mEnabled)
 			return false;
 

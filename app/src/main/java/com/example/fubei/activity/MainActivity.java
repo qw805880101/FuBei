@@ -1,13 +1,13 @@
 package com.example.fubei.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -16,9 +16,9 @@ import android.widget.Toast;
 import com.example.fubei.R;
 import com.example.fubei.adapter.LeftItemAdapter;
 import com.example.fubei.bean.AdEntity;
-import com.example.fubei.utils.StatusBarUtils;
-import com.example.fubei.widget.AutoScrollTextView;
+import com.example.fubei.widget.VerticalTextview;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.zbar.lib.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +26,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.example.fubei.utils.Utils.mToast;
 
-
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     @BindView(R.id.list_order)
     ListView mListOrder;
@@ -38,7 +36,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.main_lin)
     LinearLayout mMainLin;
     @BindView(R.id.TextViewNotice)
-    AutoScrollTextView mTextViewNotice;
+    VerticalTextview mTextViewNotice;
+    @BindView(R.id.lin_qrcode)
+    LinearLayout mLinQrcode;
+    @BindView(R.id.lin_qr_scand)
+    LinearLayout mLinQrScand;
     private ListView lv;
 
     private SlidingMenu menu;
@@ -46,6 +48,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ImageView im;
 
     private List<AdEntity> mList = new ArrayList<>();
+    private ArrayList<String> mLists = new ArrayList<>();
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -53,45 +56,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
     };
 
-    private View mStatusBar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
-        StatusBarUtils.initStatusBar(this, R.color.colorAccent);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initContentViews();
         initMenuView();
-        initView();
     }
-
-
-    private void initView() {
-        mStatusBar = (View) findViewById(R.id.status_bar);
-        ViewGroup.LayoutParams linearParams = (ViewGroup.LayoutParams) mStatusBar.getLayoutParams();
-        linearParams.height = StatusBarUtils.getStatusBarHeight(this);
-        mStatusBar.setLayoutParams(linearParams);
-        StatusBarUtils.setStatusBarViewVisibility(mStatusBar);
-    }
-
 
     /**
      * 初始化布局控件
      */
     private void initContentViews() { //初始化主界面视图
         textInit();
+        mLinQrcode.setOnClickListener(this);
         mMainLin.setOnClickListener(this);
+        mLinQrScand.setOnClickListener(this);
         mSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 mHandler.sendEmptyMessageAtTime(0, 500);
-            }
-        });
-        findViewById(R.id.lin).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
             }
         });
     }
@@ -100,27 +85,30 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         View view = this.getLayoutInflater().inflate(R.layout.left_view_layout, null);
         lv = (ListView) view.findViewById(R.id.lv);
         lv.setAdapter(new LeftItemAdapter(this));
+        lv.setOnItemClickListener(this);
         menuInit(view);
     }
 
     private void textInit() { //滚动文字初始化
         mList.add(new AdEntity("", "欢迎使用富呗", "连接2"));
         mList.add(new AdEntity("", "收款金额通知，请查看", "连接1"));
-        mTextViewNotice.setSpeed(3);
-        mTextViewNotice.setInterval(5000);
-        mTextViewNotice.setBackColor(Color.BLACK);
-        mTextViewNotice.setTexts(mList);
-        mTextViewNotice.setOnItemClickListener(new AutoScrollTextView.OnItemClickListener() {
+
+
+        mLists.add("欢迎使用富呗");
+        mLists.add("收款金额通知，请查看");
+        mTextViewNotice.setTextList(mLists);//加入显示内容,集合类型
+        mTextViewNotice.setText(17, 5, Color.RED);//设置属性,具体跟踪源码
+        mTextViewNotice.setTextStillTime(5000);//设置停留时长间隔
+        mTextViewNotice.setAnimTime(500);//设置进入和退出的时间间隔
+        //对单条文字的点击监听
+        mTextViewNotice.setOnItemClickListener(new VerticalTextview.OnItemClickListener() {
             @Override
-            public void onClick(String mUrl) {
-                if (mToast == null) {
-                    mToast = Toast.makeText(MainActivity.this, mUrl, Toast.LENGTH_LONG);
-                } else {
-                    mToast.setText(mUrl);
-                }
-                mToast.show();
+            public void onItemClick(int position) {
+                // TO DO
+                Toast.makeText(MainActivity.this, "position  = " + position, Toast.LENGTH_LONG);
             }
         });
+        mTextViewNotice.startAutoScroll();
     }
 
     private void menuInit(View view) { //菜单初始化
@@ -157,6 +145,26 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         if (v == im) {
             System.out.println("ssssssssssssss");
+        } else if (v == mLinQrcode) {
+            Intent intent = new Intent(this, QRCodeActivity.class);
+            this.startActivity(intent);
+        } else if (v == mLinQrScand) {
+            startActivity(new Intent(MainActivity.this, CaptureActivity.class));
+        }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        switch (position){
+            case 0:
+                break;
+            case 1:
+                startActivity(new Intent(MainActivity.this, BankCardListActivity.class));
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
         }
     }
 }

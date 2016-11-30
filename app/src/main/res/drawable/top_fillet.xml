@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+
+            <!-- 填充 -->
+            <solid
+                android:color="#fff"/><!-- 填充的颜色 -->
+
+            <!-- 圆角 -->
+            <corners android:bottomLeftRadius="10dp"
+                     android:bottomRightRadius="10dp"
+                     android:radius="10px"
+                     android:topLeftRadius="10dp"
+                     android:topRightRadius="10dp"
+                />
+        </shape>
+    </item>
+</selector>

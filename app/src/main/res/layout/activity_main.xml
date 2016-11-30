@@ -6,11 +6,6 @@
               android:orientation="vertical"
     >
 
-
-    <include
-        layout="@layout/statusbar_view"
-        android:focusable="true"/>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -91,7 +86,7 @@
                     >
 
                     <LinearLayout
-                        android:id="@+id/lin"
+                        android:id="@+id/lin_qr_scand"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@mipmap/home_btn_bg"
@@ -144,6 +139,7 @@
                     >
 
                     <LinearLayout
+                        android:id="@+id/lin_qrcode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@mipmap/home_btn_bg"
@@ -198,14 +194,13 @@
 
             <ImageButton
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:background="@null"
-                android:paddingBottom="10dp"
                 android:src="@mipmap/home_message01"
                 />
 
-            <com.example.fubei.widget.AutoScrollTextView
+            <com.example.fubei.widget.VerticalTextview
                 android:id="@+id/TextViewNotice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -217,7 +212,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:gravity="center"
-                android:paddingBottom="10dp"
                 android:text="更多"
                 android:textColor="#000"
                 android:textSize="@dimen/text_size"

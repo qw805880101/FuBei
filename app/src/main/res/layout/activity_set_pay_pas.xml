@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:background="#F7F7F7"
+                                     android:orientation="vertical"
+    >
+
+
+    <include layout="@layout/view_title"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/activation_rel"
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:background="#fff391"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/cash_device"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="40px"
+            android:text="短信验证码将发送至您的手机："
+            android:textColor="#000"
+            android:textSize="42px"/>
+
+        <TextView
+            android:id="@+id/activation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/cash_device"
+            android:text="183****3333"
+            android:textColor="#ff0302"
+            android:textSize="42px"/>
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:paddingLeft="30px">
+
+        <TextView
+            android:layout_width="200px"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="验证码"
+            android:textColor="#000"
+            android:textSize="42px"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="50px"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="请输入短信验证码"
+            android:textColor="#898989"
+            android:textSize="42px"
+            />
+
+        <Button
+            android:id="@+id/bt_getcode_forget"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_margin="30px"
+            android:background="@mipmap/app_forget_button_bg"
+            android:text="获取短信验证码"
+            android:textColor="#fff"
+            android:textSize="33px"/>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="30px"
+        android:background="#000"
+        />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:paddingLeft="30px">
+
+        <TextView
+            android:layout_width="200px"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="身份证号"
+            android:textColor="#000"
+            android:textSize="42px"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:gravity="center_vertical"
+            android:text="请输入用户本人的身份证号"
+            android:textColor="#898989"
+            android:textSize="42px"
+            />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="30px"
+        android:background="#000"
+        />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:paddingLeft="30px">
+
+        <TextView
+            android:layout_width="200px"
+            android:layout_height="wrap_content"
+            android:text="交易密码"
+            android:textColor="#000"
+            android:textSize="42px"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:gravity="center_vertical"
+            android:text="请输入6位数字密码"
+            android:textColor="#898989"
+            android:textSize="42px"
+            />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="30px"
+        android:background="#000"
+        />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:paddingLeft="30px">
+
+        <TextView
+            android:layout_width="200px"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="密码确认"
+            android:textColor="#000"
+            android:textSize="42px"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:gravity="center_vertical"
+            android:text="再次确认密码"
+            android:textColor="#898989"
+            android:textSize="42px"
+            />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50px"
+        android:background="@mipmap/app_withdraw_btn"
+        android:text="确认修改"
+        android:textColor="#fff"
+        android:textSize="42px"
+        />
+
+</com.zhy.autolayout.AutoLinearLayout>

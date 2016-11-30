@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="150px"
+              android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="店铺收款码"
+        android:textColor="#000"
+        android:textSize="50px"
+        />
+
+    <ImageButton
+        android:layout_width="200px"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@null"
+        android:src="@mipmap/app_banklist_right"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#000"
+        android:layout_alignParentBottom="true"
+        />
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

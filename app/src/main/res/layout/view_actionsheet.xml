@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="wrap_content"
+                                     android:orientation="vertical"
+                                     android:padding="8dp">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_fillet"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="130px"
+            android:gravity="center"
+            android:text="您可对3466尾号工商银行的储蓄卡进行操作"
+            android:textColor="#000"
+            android:textSize="42px"
+            android:visibility="visible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#000"
+            />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130px"
+            android:paddingLeft="30px"
+            android:paddingRight="30px"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:textColor="#000"
+                android:text="设置为默认入账银行卡"
+                android:textSize="42px" />
+
+            <CheckBox
+                android:id="@+id/swicth_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/swicth_selector"
+                android:button="@null" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#000"
+            />
+
+        <TextView
+            android:id="@+id/txt_mod_bank_card"
+            android:layout_width="match_parent"
+            android:layout_height="130px"
+            android:gravity="center"
+            android:text="更改银行卡"
+            android:textColor="#0166ff"
+            android:textSize="48px"
+
+            android:visibility="visible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#000"
+            />
+
+        <TextView
+            android:id="@+id/txt_del_bank_card"
+            android:layout_width="match_parent"
+            android:layout_height="130px"
+            android:gravity="center"
+            android:text="删除银行卡"
+            android:textColor="#fd5e5e"
+            android:textSize="48px"
+            android:visibility="visible"/>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+    <TextView
+        android:id="@+id/txt_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="130px"
+        android:layout_marginTop="20px"
+        android:background="#fff"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="#000"
+        android:textSize="48px"/>
+
+</com.zhy.autolayout.AutoLinearLayout>

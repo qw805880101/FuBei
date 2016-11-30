@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:orientation="vertical">
+
+    <!-- 通知详情 -->
+
+    <include layout="@layout/view_title"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56px"
+        android:gravity="center_horizontal"
+        android:text="欢迎注册FUBUY富呗"
+        android:textColor="#000"
+        android:textSize="52px"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40px"
+        android:gravity="center_horizontal"
+        android:text="2016-11-02"
+        android:textColor="#BDBDBD"
+        android:textSize="48px"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34px"
+        android:src="@mipmap/app_meaasge_line"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="40px"
+        android:text="微信、支付宝无缝介入，全新收款APP，满足您在移动端的所有收款需求，欢迎体验~"
+        android:textColor="#BDBDBD"
+        android:textSize="48px"
+        />
+
+</com.zhy.autolayout.AutoLinearLayout>

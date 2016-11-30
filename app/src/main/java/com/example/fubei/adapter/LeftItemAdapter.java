@@ -41,9 +41,7 @@ public class LeftItemAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         ViewHolder holder = null;
-
         if (convertView == null){
             holder = new ViewHolder();
             convertView = mInflater.inflate(R.layout.item_left_layout,null);

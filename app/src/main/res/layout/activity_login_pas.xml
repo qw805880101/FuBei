@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:background="#F7F7F7"
+                                     android:orientation="vertical"
+    >
+
+
+    <include layout="@layout/view_title"/>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:paddingLeft="30px">
+
+        <TextView
+            android:layout_width="200px"
+            android:layout_height="wrap_content"
+            android:text="旧密码"
+            android:textColor="#000"
+            android:textSize="42px"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:text="请输入旧的登录密码"
+            android:textColor="#898989"
+            android:textSize="42px"
+            />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:layout_marginTop="50px"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:paddingLeft="30px">
+
+        <TextView
+            android:layout_width="200px"
+            android:layout_height="wrap_content"
+            android:text="新密码"
+            android:textColor="#000"
+            android:textSize="42px"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:text="新密码，6-20个字符，限字母与数字"
+            android:textColor="#898989"
+            android:textSize="42px"
+            />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="30px"
+        android:background="#000"
+        />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:paddingLeft="30px">
+
+        <TextView
+            android:layout_width="200px"
+            android:layout_height="wrap_content"
+            android:text="密码确认"
+            android:textColor="#000"
+            android:textSize="42px"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:text="再次确认密码"
+            android:textColor="#898989"
+            android:textSize="42px"
+            />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50px"
+        android:background="@mipmap/app_withdraw_btn"
+        android:text="确认修改"
+        android:textColor="#fff"
+        android:textSize="42px"
+        />
+
+</com.zhy.autolayout.AutoLinearLayout>
