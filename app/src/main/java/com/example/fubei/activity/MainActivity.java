@@ -7,47 +7,75 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fubei.R;
 import com.example.fubei.adapter.LeftItemAdapter;
-import com.example.fubei.bean.AdEntity;
+import com.example.fubei.adapter.OrderAdapter;
+import com.example.fubei.utils.StatusBarUtils;
+import com.example.fubei.utils.Utils;
+import com.example.fubei.widget.BannerView;
 import com.example.fubei.widget.VerticalTextview;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.zbar.lib.CaptureActivity;
+import com.zhy.autolayout.AutoLinearLayout;
+import com.zhy.autolayout.AutoRelativeLayout;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * 主界面
+ * Created by tc on 2016/11/28.
+ */
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
+    @BindView(R.id.ib_head)
+    ImageButton mIbHead;
+    @BindView(R.id.tx_title)
+    TextView mTxTitle;
+    @BindView(R.id.ib_message)
+    ImageButton mIbMessage;
+    @BindView(R.id.rl_top)
+    AutoRelativeLayout mRlTop;
+    @BindView(R.id.lin_qr_scand)
+    AutoLinearLayout mLinQrScand;
+    @BindView(R.id.lin_qr_code)
+    AutoLinearLayout mLinQrCode;
+    @BindView(R.id.banner)
+    BannerView mBanner;
+    @BindView(R.id.ib_message2)
+    ImageButton mIbMessage2;
+    @BindView(R.id.TextViewNotice)
+    VerticalTextview mTextViewNotice;
+    @BindView(R.id.tx_more)
+    TextView mTxMore;
+    @BindView(R.id.tx_refresh_num)
+    TextView mTxRefreshNum;
+    @BindView(R.id.ib_list_more)
+    ImageButton mIbListMore;
+    @BindView(R.id.bt_order)
+    Button mBtOrder;
     @BindView(R.id.list_order)
     ListView mListOrder;
     @BindView(R.id.swipe)
     SwipeRefreshLayout mSwipe;
     @BindView(R.id.main_lin)
-    LinearLayout mMainLin;
-    @BindView(R.id.TextViewNotice)
-    VerticalTextview mTextViewNotice;
-    @BindView(R.id.lin_qrcode)
-    LinearLayout mLinQrcode;
-    @BindView(R.id.lin_qr_scand)
-    LinearLayout mLinQrScand;
-    private ListView lv;
+    AutoLinearLayout mMainLin;
 
     private SlidingMenu menu;
 
-    private ImageView im;
-
-    private List<AdEntity> mList = new ArrayList<>();
     private ArrayList<String> mLists = new ArrayList<>();
 
     private Handler mHandler = new Handler() {
@@ -56,21 +84,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         }
     };
 
+    private boolean isTranstatus;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        isTranstatus = StatusBarUtils.initStatusBar(this, R.color.colorAccent);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initContentViews();
         initMenuView();
     }
 
+    int[] res = {R.mipmap.app_home_banner01, R.mipmap.app_top_bg, R.mipmap.home_banner02};
+
     /**
      * 初始化布局控件
      */
     private void initContentViews() { //初始化主界面视图
         textInit();
-        mLinQrcode.setOnClickListener(this);
+        mIbHead.setOnClickListener(this);
+        mLinQrCode.setOnClickListener(this);
         mMainLin.setOnClickListener(this);
         mLinQrScand.setOnClickListener(this);
         mSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -79,25 +113,38 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 mHandler.sendEmptyMessageAtTime(0, 500);
             }
         });
+        mBanner.setImagesRes(res);
+        if (isTranstatus) {
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams
+                    .MATCH_PARENT, 150);
+            layoutParams.setMargins(0, StatusBarUtils.getStatusBarHeight(this), 0, 0);
+            mRlTop.setLayoutParams(layoutParams);
+        }
+        mListOrder.setAdapter(new OrderAdapter(this));
+        Utils.log("StatusBarUtils.getStatusBarHeight(this) = " + StatusBarUtils.getStatusBarHeight(this));
     }
+
 
     private void initMenuView() { //初始化菜单视图
         View view = this.getLayoutInflater().inflate(R.layout.left_view_layout, null);
-        lv = (ListView) view.findViewById(R.id.lv);
+        ListView lv = (ListView) view.findViewById(R.id.lv);
         lv.setAdapter(new LeftItemAdapter(this));
         lv.setOnItemClickListener(this);
+        LinearLayout lin_top = (LinearLayout) view.findViewById(R.id.lin_top);
+        if (isTranstatus) {
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams
+                    .MATCH_PARENT, 200);
+            layoutParams.setMargins(60, StatusBarUtils.getStatusBarHeight(this), 0, 0);
+            lin_top.setLayoutParams(layoutParams);
+        }
         menuInit(view);
     }
 
     private void textInit() { //滚动文字初始化
-        mList.add(new AdEntity("", "欢迎使用富呗", "连接2"));
-        mList.add(new AdEntity("", "收款金额通知，请查看", "连接1"));
-
-
         mLists.add("欢迎使用富呗");
         mLists.add("收款金额通知，请查看");
         mTextViewNotice.setTextList(mLists);//加入显示内容,集合类型
-        mTextViewNotice.setText(17, 5, Color.RED);//设置属性,具体跟踪源码
+        mTextViewNotice.setText(17, 5, Color.BLACK);//设置属性,具体跟踪源码
         mTextViewNotice.setTextStillTime(5000);//设置停留时长间隔
         mTextViewNotice.setAnimTime(500);//设置进入和退出的时间间隔
         //对单条文字的点击监听
@@ -143,23 +190,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onClick(View v) {
-        if (v == im) {
-            System.out.println("ssssssssssssss");
-        } else if (v == mLinQrcode) {
+        if (v == mLinQrCode) {
             Intent intent = new Intent(this, QRCodeActivity.class);
             this.startActivity(intent);
         } else if (v == mLinQrScand) {
             startActivity(new Intent(MainActivity.this, CaptureActivity.class));
+        } else if (v == mIbHead) {
+            menu.showMenu();
         }
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        switch (position){
+        switch (position) {
             case 0:
                 break;
             case 1:
-                startActivity(new Intent(MainActivity.this, BankCardListActivity.class));
+                startActivity(new Intent(MainActivity.this, BankCardActivity.class));
                 break;
             case 2:
                 break;

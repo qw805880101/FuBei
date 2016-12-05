@@ -11,7 +11,10 @@ import android.widget.ImageView;
 import com.example.fubei.R;
 import com.example.fubei.utils.Utils;
 
-@SuppressLint("HandlerLeak")
+/**
+ * 初始化界面
+ * Created by tc on 2016/11/28.
+ */
 public class InitActivity extends Activity{
 	
 	private ImageView image_init;

@@ -14,16 +14,18 @@ import android.view.WindowManager;
 public class StatusBarUtils {
 
     //初始化状态栏
-    public static void initStatusBar(Activity activity, int color) {
+    public static boolean initStatusBar(Activity activity, int color) {
         if (activity == null || color <= 0)
-            return;
+            return false;
         //取消状态栏修改颜色
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams
                     .FLAG_FULLSCREEN);//去掉信息栏
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);//显示状态栏
             setTranslucentStatus(activity, true);
+            return true;
         }
+        return false;
     }
 
     //状态栏显示隐藏设置

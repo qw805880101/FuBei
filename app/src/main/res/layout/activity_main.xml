@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/main_lin"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                     android:id="@+id/main_lin"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:background="#f5f5f9"
+                                     android:orientation="vertical"
     >
 
-    <RelativeLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@mipmap/home_banner01"
+        android:layout_height="650px"
+        android:background="@mipmap/app_top_bg"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/rl_top"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="150px"
             android:gravity="center_vertical">
 
             <ImageButton
                 android:id="@+id/ib_head"
-                android:layout_width="50dp"
+                android:layout_width="150px"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:background="@null"
@@ -35,38 +36,31 @@
                 android:layout_centerVertical="true"
                 android:text="“富呗”小额有礼活动！"
                 android:textColor="#fff"
-                android:textSize="20sp"/>
+                android:textSize="52px"/>
 
             <ImageButton
                 android:id="@+id/ib_message"
-                android:layout_width="50dp"
+                android:layout_width="150px"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:background="@null"
-                android:src="@mipmap/home_message"
+                android:src="@mipmap/home_mail"
                 />
-        </RelativeLayout>
+        </com.zhy.autolayout.AutoRelativeLayout>
 
-        <ImageView
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:background="@mipmap/home_circle"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             >
 
-            <RelativeLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="35dp"
+                android:layout_marginRight="124px"
                 >
 
                 <ImageView
@@ -77,15 +71,15 @@
                     android:src="@mipmap/home_btn_shadow"
                     />
 
-                <RelativeLayout
+                <com.zhy.autolayout.AutoRelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:paddingBottom="10dp"
+                    android:paddingBottom="20px"
                     >
 
-                    <LinearLayout
+                    <com.zhy.autolayout.AutoLinearLayout
                         android:id="@+id/lin_qr_scand"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -97,29 +91,29 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@mipmap/home_scan"
+                            android:src="@mipmap/home_btn_scan"
                             />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="20px"
                             android:text="扫码付"
-                            android:textColor="#000"
-                            android:textSize="17sp"
+                            android:textColor="#fff"
+                            android:textSize="40px"
                             />
 
-                    </LinearLayout>
+                    </com.zhy.autolayout.AutoLinearLayout>
 
-                </RelativeLayout>
+                </com.zhy.autolayout.AutoRelativeLayout>
 
-            </RelativeLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
 
 
-            <RelativeLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
+                android:layout_marginLeft="124px"
                 >
 
                 <ImageView
@@ -130,16 +124,16 @@
                     android:src="@mipmap/home_btn_shadow"
                     />
 
-                <RelativeLayout
+                <com.zhy.autolayout.AutoRelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:paddingBottom="10dp"
+                    android:paddingBottom="20px"
                     >
 
-                    <LinearLayout
-                        android:id="@+id/lin_qrcode"
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/lin_qr_code"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@mipmap/home_btn_bg"
@@ -150,7 +144,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@mipmap/home_qr"
+                            android:src="@mipmap/home_btn_qr"
                             />
 
                         <TextView
@@ -158,46 +152,70 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="付款码"
-                            android:textColor="#000"
-                            android:textSize="17sp"
+                            android:textColor="#fff"
+                            android:textSize="40px"
                             />
 
-                    </LinearLayout>
+                    </com.zhy.autolayout.AutoLinearLayout>
 
-                </RelativeLayout>
+                </com.zhy.autolayout.AutoRelativeLayout>
 
-            </RelativeLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
 
 
-        </LinearLayout>
-
-    </RelativeLayout>
-
-
-    <LinearLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.4"
+        android:layout_height="1px"
+        android:layout_marginTop="26px"
+        android:background="#e9e9ea"
+        />
+
+    <com.example.fubei.widget.BannerView
+        android:id="@+id/banner"
+        android:layout_width="wrap_content"
+        android:layout_height="250px"
+
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginBottom="26px"
+        android:background="#e9e9ea"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#e9e9ea"
+        />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#fff"
         android:orientation="vertical"
         >
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_margin="42px"
             android:gravity="center"
             android:orientation="horizontal"
             >
 
             <ImageButton
+                android:id="@+id/ib_message2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20px"
                 android:background="@null"
-                android:src="@mipmap/home_message01"
+                android:src="@mipmap/home_bot_mail"
                 />
 
             <com.example.fubei.widget.VerticalTextview
@@ -208,61 +226,82 @@
                 />
 
             <TextView
+                android:id="@+id/tx_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:gravity="center"
                 android:text="更多"
                 android:textColor="#000"
-                android:textSize="@dimen/text_size"
+                android:textSize="16sp"
                 />
 
-        </LinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginRight="20dp"
+            android:layout_height="60px"
             android:gravity="center"
             android:orientation="horizontal"
+            android:paddingLeft="52px"
+            android:paddingRight="52px"
             >
 
             <TextView
+                android:id="@+id/tx_refresh_num"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:paddingLeft="20dp"
                 android:text="您有0笔收款入账，请下拉刷新"
                 android:textColor="#000"
                 android:textSize="@dimen/text_size"
                 />
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:id="@+id/ib_list_more"
+                android:layout_width="60px"
+                android:layout_height="match_parent"
                 android:background="@null"
                 android:src="@mipmap/home_arrow_down"
                 />
 
-        </LinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
 
 
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/swipe"
-            android:layout_width="wrap_content"
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ListView
-                android:id="@+id/list_order"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/bt_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="30px"
+                android:layout_marginTop="30px"
+                android:background="@mipmap/home_bot_btn"
+                android:text="全部收款明细"
+                android:textColor="#fff"
+                android:textSize="52px"
+                />
 
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/swipe"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_above="@id/bt_order">
 
-        </android.support.v4.widget.SwipeRefreshLayout>
+                <ListView
+                    android:id="@+id/list_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:divider="@null"
+                    android:scrollbars="none"
+                    />
 
+            </android.support.v4.widget.SwipeRefreshLayout>
 
-    </LinearLayout>
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
 
-
-</LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

@@ -4,7 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="leftW">50dp</dimen>
 
-    <dimen name="text_size">17sp</dimen>
+    <dimen name="text_size">42px</dimen>
 
     <dimen name="padding_small">8dp</dimen>
     <dimen name="padding_medium">8dp</dimen>

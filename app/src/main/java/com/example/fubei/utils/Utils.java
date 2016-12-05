@@ -114,7 +114,7 @@ public class Utils {
     }
 
     @SuppressLint("NewApi")
-    public static void transStatus(Activity activity) {
+    public static boolean transStatus(Activity activity) {
         activity.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = activity.getWindow();
@@ -125,6 +125,9 @@ public class Utils {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
             window.setNavigationBarColor(Color.TRANSPARENT);
+            return true;
+        } else {
+            return false;
         }
     }
 }

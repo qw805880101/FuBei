@@ -75,6 +75,7 @@ public class CustomViewBehind extends ViewGroup {
         if (mContent != null)
             removeView(mContent);
         mContent = v;
+
         addView(mContent);
     }
 

@@ -12,10 +12,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
+ * 银行卡界面
  * Created by tc on 2016/11/28.
  */
 
-public class BankCardListActivity extends BaseActivity {
+public class BankCardActivity extends BaseActivity {
 
     @BindView(R.id.lin_add_card)
     AutoLinearLayout mLinAddCard;

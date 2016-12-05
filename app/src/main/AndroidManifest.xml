@@ -15,10 +15,10 @@
 
         <meta-data
             android:name="design_width"
-            android:value="640"></meta-data>
+            android:value="1080"></meta-data>
         <meta-data
             android:name="design_height"
-            android:value="1175"></meta-data>
+            android:value="1920"></meta-data>
 
         <activity
             android:name="com.example.fubei.activity.MainActivity"
@@ -32,7 +32,7 @@
 
         <activity android:name=".activity.QRCodeActivity"/>
 
-        <activity android:name=".activity.BankCardListActivity"/>
+        <activity android:name=".activity.BankCardActivity"/>
 
         <activity android:name="com.zbar.lib.CaptureActivity"/>
 
